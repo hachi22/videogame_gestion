@@ -37,7 +37,7 @@ public class ControllerLogin {
     public String afegirSubmit(@ModelAttribute("user") UserObject userObject){
         userObject.setRol("USER");
         userService.putUser(userObject);
-        return "redirect:/main";
+        return "redirect:/";
 
     }
 

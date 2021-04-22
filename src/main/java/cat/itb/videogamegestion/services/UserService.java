@@ -28,13 +28,14 @@ public class UserService {
 
     @PostConstruct
     public void init() {
-        //  rep.addAll(
+        rep.addAll(
         //      Arrays.asList(
         //              new UserObject("user1", passwordEncoder("user1"), "user1"),
         //            new UserObject("ADMIN", passwordEncoder("ADMIN"), "ADMIN","ADMIN")
         //  ));
-        userRepository.save(new UserObject("user1", "1234", "1234"));
-        userRepository.save(new UserObject("ADMIN", "ADMIN", "ADMIN","ADMIN"));
+                Arrays.asList(
+        userRepository.save(new UserObject("user1", "1234", "1234")),
+        userRepository.save(new UserObject("ADMIN", "ADMIN", "ADMIN","ADMIN"))));
     }
 
     

@@ -1,6 +1,7 @@
 package cat.itb.videogamegestion.controllers;
 
 import cat.itb.videogamegestion.models.UserObject;
+import cat.itb.videogamegestion.repositories.UserRepository;
 import cat.itb.videogamegestion.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,8 @@ public class ControllerLogin {
 
     @Autowired
     UserService userService;
+    @Autowired
+    UserRepository userRepository;
 
 
 
@@ -36,7 +39,7 @@ public class ControllerLogin {
     @PostMapping("/register")
     public String afegirSubmit(@ModelAttribute("user") UserObject userObject){
         userObject.setRol("USER");
-        userService.putUser(userObject);
+        userRepository.save(userObject);
         return "redirect:/";
 
     }

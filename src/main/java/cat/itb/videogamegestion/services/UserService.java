@@ -42,6 +42,8 @@ public class UserService {
         userRepository.save(new UserObject("ADMIN", "ADMIN", "ADMIN","ADMIN"));
     }
 
+    public void putUser(UserObject user){userRepository.save(user);}
+
     
     /*public UserObject checkUsername(String userName) {
         UserObject userObject = null;

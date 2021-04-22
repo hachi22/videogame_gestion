@@ -1,6 +1,7 @@
 package cat.itb.videogamegestion.controllers;
 
 import cat.itb.videogamegestion.models.Videogame;
+import cat.itb.videogamegestion.repositories.VideogameRepository;
 import cat.itb.videogamegestion.services.UserService;
 import cat.itb.videogamegestion.services.VideogameService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
+
+import java.util.List;
 
 @Controller
 public class ControllerGeneral {
@@ -18,6 +21,8 @@ public class ControllerGeneral {
     VideogameService videogameService;
     @Autowired
     UserService userService;
+    @Autowired
+    VideogameRepository videogameRepository;
 
 
     @GetMapping("/listUsers")
@@ -32,10 +37,8 @@ public class ControllerGeneral {
     }
 
     @GetMapping("/listVideogame")
-    public String listVideogame(Model m){
-        m.addAttribute("videogameList",videogameService.list());
-        m.addAttribute("videogame",new Videogame());
-        return "listVideogame";
+    public List<Videogame> listVideogame(){
+        return (List<Videogame>) videogameRepository.findAll();
     }
 
     @RequestMapping("/add")

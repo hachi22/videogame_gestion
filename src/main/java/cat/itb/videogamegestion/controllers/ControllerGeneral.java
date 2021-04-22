@@ -70,6 +70,21 @@ public class ControllerGeneral {
 
     }
 
+    @RequestMapping(method=RequestMethod.PUT, value = "/{name}")
+    public Videogame updateVideogames(@PathVariable("aname") String name,@RequestBody    Videogame videogame){
+
+        if (animal != null && animalRepository.exists(animalsId)){
+
+            Animals oldAnimal = animalRepository.findOne(animalsId);
+
+            oldAnimal.setName(animal.getName());
+            oldAnimal.setChip(animal.getChip());
+
+            return animalRepository.save(oldAnimal);
+        }
+        return null;
+    }
+
     @RequestMapping( value ="/delete/{name}", method = RequestMethod.POST)
     public String removeAnimal(@PathVariable("name") String videogame){
         videogameService.removeVideogameByName(videogame);

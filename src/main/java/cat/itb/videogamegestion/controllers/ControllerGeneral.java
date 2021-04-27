@@ -1,6 +1,8 @@
 package cat.itb.videogamegestion.controllers;
 
+import cat.itb.videogamegestion.models.UserObject;
 import cat.itb.videogamegestion.models.Videogame;
+import cat.itb.videogamegestion.repositories.UserRepository;
 import cat.itb.videogamegestion.repositories.VideogameRepository;
 import cat.itb.videogamegestion.services.UserService;
 import cat.itb.videogamegestion.services.VideogameService;
@@ -23,12 +25,13 @@ public class ControllerGeneral {
     UserService userService;
     @Autowired
     VideogameRepository videogameRepository;
+    @Autowired
+    UserRepository userRepository;
 
 
     @GetMapping("/listUsers")
-    public String listUsers(Model m){
-        m.addAttribute("listUsers",userService.list());
-        return "listUsers";
+    public List<UserObject> listUsers(){
+        return (List<UserObject>) userRepository.findAll();
     }
 
     @GetMapping("/main")
@@ -69,7 +72,7 @@ public class ControllerGeneral {
         return "redirect:/listVideogame";
 
     }
-
+    /*
     @RequestMapping(method=RequestMethod.PUT, value = "/{name}")
     public Videogame updateVideogames(@PathVariable("aname") String name,@RequestBody    Videogame videogame){
 
@@ -84,6 +87,8 @@ public class ControllerGeneral {
         }
         return null;
     }
+
+     */
 
     @RequestMapping( value ="/delete/{name}", method = RequestMethod.POST)
     public String removeAnimal(@PathVariable("name") String videogame){

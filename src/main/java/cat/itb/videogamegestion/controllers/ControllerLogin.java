@@ -33,10 +33,10 @@ public class ControllerLogin {
     @GetMapping("/register")
     public String register(Model model){
         model.addAttribute("user", new UserObject());
-        return "registerUser";
+        return "register";
     }
 
-    @PostMapping("/registerUser")
+    @PostMapping("/register")
     public String afegirSubmit(@ModelAttribute("UserObject") UserObject userObject){
         userObject.setRol("USER");
         userService.putUser(userObject);

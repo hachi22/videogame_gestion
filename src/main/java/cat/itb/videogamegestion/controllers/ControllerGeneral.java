@@ -67,7 +67,9 @@ public class ControllerGeneral {
     }
 
     @PostMapping("/addVideogame")
-    public Videogame addVideogame(){return videogameRepository.save(new Videogame());
+    public String addVideogame(@ModelAttribute("Videogame") Videogame videogame){
+        videogameService.add(videogame);
+        return "redirect:/listVideogame";
 
     }
     /*
@@ -89,7 +91,7 @@ public class ControllerGeneral {
      */
 
     @RequestMapping( value ="/delete/{name}", method = RequestMethod.POST)
-    public String removeAnimal(@PathVariable("name") String videogame){
+    public String removeVideogame(@PathVariable("name") String videogame){
         videogameService.removeVideogameByName(videogame);
         return "redirect:/listVideogame";
     }

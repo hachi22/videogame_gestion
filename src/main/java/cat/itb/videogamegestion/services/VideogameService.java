@@ -16,10 +16,7 @@ public class VideogameService {
     private List<Videogame> repositori = new ArrayList<>();
 
     public void add( Videogame videogame) {
-        repositori.add(videogame);
-    }
-    public List<Videogame> list() {
-        return repositori;
+        videogameRepository.save(videogame);
     }
 
     @Autowired

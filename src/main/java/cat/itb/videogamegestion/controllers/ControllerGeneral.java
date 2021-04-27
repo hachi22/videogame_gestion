@@ -45,9 +45,7 @@ public class ControllerGeneral {
     }
 
     @RequestMapping("/add")
-    public String addVideogame(Model model) {
-        model.addAttribute("Videogame", new Videogame());
-        return "addVideogame";
+    public Videogame addVideogame() {return videogameRepository.save(new Videogame());
     }
 
     @RequestMapping( value ="/update/{name}", method = RequestMethod.POST)

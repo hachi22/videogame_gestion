@@ -28,7 +28,7 @@
                 <td th:text="${Videogame.name} + ':'   " th:style="'color: white'">name</td>
                 <td th:text="${Videogame.description} " th:style="'color: white'">Description</td>
 
-                <form action="#"  th:action="@{update/{name}(name = ${Videogame.name})}" th:object="${Videogame}"  method="post">
+                <form action="#"  th:action="@{updateVideogame/{name}(name = ${Videogame.name})}" th:object="${Videogame}"  method="post">
             <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Update Videogame </button>
                     </form>
 

@@ -79,7 +79,7 @@ public class ControllerGeneral {
     }
 
     @RequestMapping(method=RequestMethod.PUT, value = "/{name}")
-    public String updateVideogames(@PathVariable("name") String name,@RequestBody    Videogame videogame){
+    public String updateVideogames(@PathVariable("name") String name,@RequestBody Videogame videogame){
 
         if (videogame != null && videogameRepository.existsById(name)){
 

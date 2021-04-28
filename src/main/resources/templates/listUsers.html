@@ -32,11 +32,13 @@
                 </thead>
                 <tbody>
 
-            <tr th:each="Users : ${listUsers}">
-                <td th:text="${Users.username}">Name</td>
+            <tr th:each="users : ${listUsers}">
+                <td th:text="${Users.username}">Username</td>
                 <td th:text="${Users.password}">Password</td>
                 <td th:text="${Users.rol}">Rol</td>
             </tr>
+                </tbody>
+            </table>
 
             <button type="submit" onclick="document.location.href='/main'" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Back </button>
 

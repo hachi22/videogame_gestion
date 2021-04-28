@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
+import java.util.ArrayList;
+import java.util.List;
 
 import java.util.List;
 
@@ -56,9 +58,10 @@ public class ControllerGeneral {
         name =videogame;
         m.addAttribute("Videogame",videogameService.searchByName(videogame));
 
-        return "/updateVideogame";
+        return "updateVideogames";
     }
 
+    /*
     @PostMapping("/updateVideogame")
     public String updateVideogame(@ModelAttribute("Videogame") Videogame videogame){
         videogameService.updateVideogame(videogame,name);
@@ -66,29 +69,31 @@ public class ControllerGeneral {
 
     }
 
+     */
+
     @PostMapping("/addVideogame")
     public String addVideogame(@ModelAttribute("Videogame") Videogame videogame){
         videogameService.add(videogame);
         return "redirect:/listVideogame";
 
     }
-    /*
+
     @RequestMapping(method=RequestMethod.PUT, value = "/{name}")
-    public Videogame updateVideogames(@PathVariable("aname") String name,@RequestBody    Videogame videogame){
+    public String updateVideogames(@PathVariable("name") String name,@RequestBody    Videogame videogame){
 
-        if (animal != null && animalRepository.exists(animalsId)){
+        if (videogame != null && videogameRepository.existsById(name)){
 
-            Animals oldAnimal = animalRepository.findOne(animalsId);
+            Videogame oldVideogame = videogameRepository.findById(name).orElse(null);
 
-            oldAnimal.setName(animal.getName());
-            oldAnimal.setChip(animal.getChip());
+            oldVideogame.setName(videogame.getName());
+            oldVideogame.setDescription(videogame.getDescription());
 
-            return animalRepository.save(oldAnimal);
+             videogameRepository.save(oldVideogame);
         }
-        return null;
+        return "redirect:/listVideogame";
     }
 
-     */
+
 
     @RequestMapping( value ="/delete/{name}", method = RequestMethod.POST)
     public String removeVideogame(@PathVariable("name") String videogame){

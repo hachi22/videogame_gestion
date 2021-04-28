@@ -52,12 +52,13 @@ public class ControllerGeneral {
         return "addVideogame";
     }
 
-    @RequestMapping( "/updateVideogames")
-    public String updateVideogame(String videogame, Model m) {
+    @RequestMapping( value ="/update/{name}", method = RequestMethod.POST)
+    public String update(@PathVariable("name") String videogame, Model m) {
 
+        name =videogame;
         m.addAttribute("Videogame",videogameService.searchByName(videogame));
 
-        return "updateVideogames";
+        return "/updateVideogame";
     }
 
     /*
@@ -76,9 +77,9 @@ public class ControllerGeneral {
         return "redirect:/listVideogame";
 
     }
-
+/*
     @RequestMapping(method=RequestMethod.PUT, value = "/{name}")
-    public String updateVideogames(@PathVariable("name") String name,@RequestBody Videogame videogame){
+    public String updateVideogame(@PathVariable("name") String name,@RequestBody Videogame videogame){
 
         if (videogame != null && videogameRepository.existsById(name)){
 
@@ -90,6 +91,15 @@ public class ControllerGeneral {
              videogameRepository.save(oldVideogame);
         }
         return "redirect:/listVideogame";
+    }
+
+ */
+
+    @PostMapping("/updateVideogame")
+    public String updateVideogame(@ModelAttribute("Videogame") Videogame videogame){
+        videogameService.updateVideogame(videogame,name);
+        return "redirect:/listVideogame";
+
     }
 
 

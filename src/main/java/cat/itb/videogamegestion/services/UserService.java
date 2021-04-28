@@ -42,7 +42,10 @@ public class UserService {
         userRepository.save(new UserObject("ADMIN", passwordEncoder("ADMIN"), "ADMIN","ADMIN"));
     }
 
-    public void putUser(UserObject user){userRepository.save(user);}
+    public void putUser(UserObject user){
+        user.setRol("USER");
+        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+        userRepository.save(user);}
 
     
     /*public UserObject checkUsername(String userName) {

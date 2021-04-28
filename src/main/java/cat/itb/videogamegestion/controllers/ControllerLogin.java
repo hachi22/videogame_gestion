@@ -37,9 +37,8 @@ public class ControllerLogin {
     }
 
     @PostMapping("/register")
-    public String afegirSubmit(@ModelAttribute("UserObject") UserObject userObject){
-        userObject.setRol("USER");
-        userService.putUser(userObject);
+    public String afegirSubmit(@ModelAttribute("user") UserObject user){
+        userService.putUser(user);
         return "redirect:/";
 
     }

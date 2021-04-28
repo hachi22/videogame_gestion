@@ -52,7 +52,7 @@ public class ControllerGeneral {
         return "addVideogame";
     }
 
-    @RequestMapping( value ="/update/{name}", method = RequestMethod.POST)
+    @RequestMapping( value ="/updateVideogames/{name}", method = RequestMethod.POST)
     public String update(@PathVariable("name") String videogame, Model m){
 
         name =videogame;

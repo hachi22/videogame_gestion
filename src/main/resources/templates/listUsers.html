@@ -33,9 +33,9 @@
                 <tbody>
 
             <tr th:each="Users : ${listUsers}">
-                <td th:text="Username + ':'   + ${Users.username}">name</td>
-                <td th:text="Password + ':'   + ${Users.password}   ">password</td>
-                <td th:text="Rol + ':'   + ${Users.rol}">rol</td>
+                <td th:text="${Users.username}">Name</td>
+                <td th:text="${Users.password}">Password</td>
+                <td th:text="${Users.rol}">Rol</td>
             </tr>
 
             <button type="submit" onclick="document.location.href='/main'" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Back </button>

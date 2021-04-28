@@ -61,16 +61,6 @@ public class ControllerGeneral {
         return "updateVideogame";
     }
 
-    /*
-    @PostMapping("/updateVideogame")
-    public String updateVideogame(@ModelAttribute("Videogame") Videogame videogame){
-        videogameService.updateVideogame(videogame,name);
-        return "redirect:/listVideogame";
-
-    }
-
-     */
-
     @PostMapping("/addVideogame")
     public String addVideogame(@ModelAttribute("Videogame") Videogame videogame){
         videogameService.add(videogame);
@@ -85,26 +75,13 @@ public class ControllerGeneral {
 
             Videogame oldVideogame = videogameRepository.findById(name).orElse(null);
 
-            videogame.setName(oldVideogame.getName());
-            videogame.setDescription(oldVideogame.getDescription());
+            oldVideogame.setName(videogame.getName());
+            oldVideogame.setDescription(videogame.getDescription());
 
-             videogameRepository.save(videogame);
+             videogameRepository.save(oldVideogame);
         }
         return "redirect:/listVideogame";
     }
-
- /*
-
-    @PostMapping("/updateVideogame")
-    public String updateVideogame(@ModelAttribute("Videogame") Videogame videogame){
-        videogameService.updateVideogame(videogame,name);
-        return "redirect:/listVideogame";
-
-    }
-
-  */
-
-
 
     @RequestMapping( value ="/delete/{name}", method = RequestMethod.POST)
     public String removeVideogame(@PathVariable("name") String videogame){

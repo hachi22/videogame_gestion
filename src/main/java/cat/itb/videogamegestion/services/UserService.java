@@ -14,53 +14,22 @@ import java.util.List;
 @Service
 public class UserService {
 
-    private List<UserObject> rep = new ArrayList<>();
-    /*
-    public void putUser(UserObject userObject) {
-        userObject.setPassword(passwordEncoder(userObject.getPassword()));
-        rep.add(userObject);
-    }
-
-     */
-    public List<UserObject> list() {
-        return rep;
-    }
-
-
-
     @Autowired
     private UserRepository userRepository;
 
     @PostConstruct
     public void init() {
-        //  rep.addAll(
-        //      Arrays.asList(
-        //              new UserObject("user1", passwordEncoder("user1"), "user1"),
-        //            new UserObject("ADMIN", passwordEncoder("ADMIN"), "ADMIN","ADMIN")
-        //  ));
         userRepository.save(new UserObject("user1", passwordEncoder("1234"), "1234"));
         userRepository.save(new UserObject("ADMIN", passwordEncoder("ADMIN"), "ADMIN","ADMIN"));
     }
 
-    public void putUser(UserObject user){
+    public UserObject putUser(UserObject user){
         user.setRol("USER");
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-        userRepository.save(user);}
+        userRepository.save(user);
+        return user;}
 
-    
-    /*public UserObject checkUsername(String userName) {
-        UserObject userObject = null;
-        boolean found = false;
-        for (int i = 0; i < rep.size() && !found; i++) {
-            if (userName.equals(rep.get(i).getUsername())){
 
-                userObject = rep.get(i);
-                found=true;
-            }
-        }
-        return  userObject;
-    }
-*/
     public UserObject checkUsername(String username){
         return userRepository.findById(username).orElse(null);
     }

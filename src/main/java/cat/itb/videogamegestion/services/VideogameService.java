@@ -13,8 +13,6 @@ import java.util.List;
 @Service
 public class VideogameService {
 
-    private List<Videogame> repositori = new ArrayList<>();
-
     public void add( Videogame videogame) {
         videogameRepository.save(videogame);
     }
@@ -36,45 +34,4 @@ public class VideogameService {
         videogameRepository.deleteById(name);
     }
 
-
-/*
-    public Videogame searchByName(String videogameTitle) {
-        Videogame videogame = null;
-        boolean found = false;
-        for (int i = 0; i < repositori.size() && !found; i++) {
-            if (videogameTitle.equals(repositori.get(i).getName())){
-
-                videogame = repositori.get(i);
-                found=true;
-            }
-        }
-        return  videogame;
-    }
-
-    public void removeVideogameByName(String videogameName){
-        Videogame videogame = null;
-        boolean found = false;
-        for (int i = 0; i < repositori.size() && !found; i++) {
-            if (videogameName.equals(repositori.get(i).getName())){
-
-                videogame = repositori.get(i);
-                found=true;
-            }
-        }
-        repositori.remove(videogame);
-    }
-*/
-    public void updateVideogame(Videogame videogame, String textChange ){
-        boolean found = false;
-        for (int i = 0; i < repositori.size() && !found; i++) {
-            if (textChange.equals(repositori.get(i).getName())){
-
-
-                repositori.get(i).setName(videogame.getName());
-                repositori.get(i).setDescription(videogame.getDescription());
-
-            }
-        }
-
-    }
 }

@@ -22,9 +22,17 @@
 <div class="modal-dialog text-center">
     <div class="col-sm-8 main-section">
         <div class="modal-content">
+            <table>
+                <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Rol</th>
+                </tr>
+                </thead>
+                <tbody>
 
             <tr th:each="Users : ${listUsers}">
-                <br>
                 <td th:text="Username + ':'   + ${Users.username}">name</td>
                 <td th:text="Password + ':'   + ${Users.password}   ">password</td>
                 <td th:text="Rol + ':'   + ${Users.rol}">rol</td>

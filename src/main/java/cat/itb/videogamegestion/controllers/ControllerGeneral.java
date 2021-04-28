@@ -52,10 +52,9 @@ public class ControllerGeneral {
         return "addVideogame";
     }
 
-    @RequestMapping( "/updateVideogames/{name}")
-    public String update(@PathVariable("name") String videogame, Model m){
+    @RequestMapping( "/updateVideogames")
+    public String updateVideogame(String videogame, Model m) {
 
-        name = videogame;
         m.addAttribute("Videogame",videogameService.searchByName(videogame));
 
         return "updateVideogames";

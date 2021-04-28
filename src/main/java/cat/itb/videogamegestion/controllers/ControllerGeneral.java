@@ -58,7 +58,7 @@ public class ControllerGeneral {
         name =videogame;
         m.addAttribute("Videogame",videogameService.searchByName(videogame));
 
-        return "/updateVideogame";
+        return "updateVideogame";
     }
 
     /*

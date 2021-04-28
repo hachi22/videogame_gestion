@@ -77,23 +77,23 @@ public class ControllerGeneral {
         return "redirect:/listVideogame";
 
     }
-/*
-    @RequestMapping(method=RequestMethod.PUT, value = "/{name}")
-    public String updateVideogame(@PathVariable("name") String name,@RequestBody Videogame videogame){
+
+    @RequestMapping("/updateVideogame")
+    public String updateVideogame(@ModelAttribute("Videogame") String name, Videogame videogame){
 
         if (videogame != null && videogameRepository.existsById(name)){
 
             Videogame oldVideogame = videogameRepository.findById(name).orElse(null);
 
-            oldVideogame.setName(videogame.getName());
-            oldVideogame.setDescription(videogame.getDescription());
+            videogame.setName(oldVideogame.getName());
+            videogame.setDescription(oldVideogame.getDescription());
 
-             videogameRepository.save(oldVideogame);
+             videogameRepository.save(videogame);
         }
         return "redirect:/listVideogame";
     }
 
- */
+ /*
 
     @PostMapping("/updateVideogame")
     public String updateVideogame(@ModelAttribute("Videogame") Videogame videogame){
@@ -101,6 +101,8 @@ public class ControllerGeneral {
         return "redirect:/listVideogame";
 
     }
+
+  */
 
 
 

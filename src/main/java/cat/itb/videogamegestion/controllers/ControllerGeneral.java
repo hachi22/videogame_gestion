@@ -69,17 +69,10 @@ public class ControllerGeneral {
     }
 
     @RequestMapping("/updateVideogame")
-    public String updateVideogame(@ModelAttribute("Videogame") String name, Videogame videogame){
+    public String updateVideogame(@ModelAttribute("Videogame") Videogame videogame){
 
-        if (videogame != null && videogameRepository.existsById(name)){
+             videogameRepository.save(videogame);
 
-            Videogame oldVideogame = videogameRepository.findById(name).orElse(null);
-
-            oldVideogame.setName(videogame.getName());
-            oldVideogame.setDescription(videogame.getDescription());
-
-             videogameRepository.save(oldVideogame);
-        }
         return "redirect:/listVideogame";
     }
 

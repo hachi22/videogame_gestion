@@ -75,6 +75,7 @@ public class ControllerGeneral {
 
             Videogame oldVideogame = videogameRepository.findById(name).orElse(null);
 
+            assert oldVideogame != null;
             oldVideogame.setName(videogame.getName());
             oldVideogame.setDescription(videogame.getDescription());
 

@@ -69,7 +69,7 @@ public class ControllerGeneral {
     }
 
     @RequestMapping("/updateVideogame")
-    public String updateVideogame(@ModelAttribute("Videogame") Videogame videogame, String name){
+    public String updateVideogame(@ModelAttribute("Videogame") Videogame videogame){
 
         if (videogame != null && videogameRepository.existsById(name)){
 
